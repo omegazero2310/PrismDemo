@@ -1,12 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PrismDemo.Views.UserInfoListingPage">
+             x:Class="PrismDemo.Views.UserInfoListingPage"
+             xmlns:local="clr-namespace:PrismDemo.ViewModels"  
+             xmlns:model="clr-namespace:PrismDemo.Models">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <RefreshView  Command="{Binding LoadUsersCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Users}"
+                SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="0,0,0,1">
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="User Name:"/>
+                                <Label Text="{Binding UserName}" 
+                            LineBreakMode="NoWrap" 
+                            FontSize="16" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="First Name:"/>
+                                <Label Text="{Binding FirstName}" 
+                            LineBreakMode="NoWrap" 
+                            FontSize="16" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="Last Name:"/>
+                                <Label Text="{Binding LastName}" 
+                            LineBreakMode="NoWrap" 
+                            FontSize="16" />
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

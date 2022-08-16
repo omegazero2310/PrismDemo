@@ -1,0 +1,3 @@
+﻿Name format : PrismDemo.Exts.ResourceImage.
+<projectName>.<folder>.<ImageName>
+image should add as embeded Resource

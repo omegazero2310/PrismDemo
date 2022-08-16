@@ -4,6 +4,7 @@ using PrismDemo.Models;
 using PrismDemo.Services;
 using PrismDemo.ViewModels;
 using PrismDemo.Views;
+using System.Reflection;
 using Xamarin.Essentials;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
@@ -29,7 +30,11 @@ namespace PrismDemo
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            foreach (var res in assembly.GetManifestResourceNames())
+            {
+                System.Diagnostics.Debug.WriteLine("found resource: " + res);
+            }
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
@@ -41,6 +46,7 @@ namespace PrismDemo
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<UserInfoListingPage, UserInfoListingViewModel>();
+            containerRegistry.RegisterForNavigation<UserInfoUpdatePage, UserInfoUpdateViewModel>();
         }
     }
 }

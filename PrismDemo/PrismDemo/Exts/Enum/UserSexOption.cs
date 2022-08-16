@@ -6,7 +6,7 @@ using System.Text;
 namespace PrismDemo.Exts.Enum
 {
     [StoreAsText]
-    public enum UserSex
+    public enum UserGenderOption
     {
         Male = 0,
         Female = 1,
