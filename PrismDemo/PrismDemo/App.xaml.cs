@@ -30,11 +30,6 @@ namespace PrismDemo
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            var assembly = typeof(App).GetTypeInfo().Assembly;
-            foreach (var res in assembly.GetManifestResourceNames())
-            {
-                System.Diagnostics.Debug.WriteLine("found resource: " + res);
-            }
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
