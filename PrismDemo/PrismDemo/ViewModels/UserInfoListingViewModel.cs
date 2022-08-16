@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Prism;
+using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using PrismDemo.Models;
@@ -9,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PrismDemo.ViewModels
 {
@@ -16,7 +18,7 @@ namespace PrismDemo.ViewModels
     {
         private IDBServices<UserInfo> _services;
         private IPageDialogService _pageDialogService;
-        public ObservableCollection<UserInfo> Users { get; }
+        public ObservableCollection<UserInfo> Users { get; } = new ObservableCollection<UserInfo>();
         private UserInfo _selectedUser;
         public UserInfo SelectedUser
         {
@@ -43,30 +45,30 @@ namespace PrismDemo.ViewModels
             _userSwipeDelete ?? (_userSwipeDelete = new DelegateCommand<UserInfo>(ExecuteUserSwipeDeleteCommand));
 
         private DelegateCommand<UserInfo> _userSwipeEdit;
+
+        public event EventHandler IsActiveChanged;
+
         public DelegateCommand<UserInfo> UserSwipeEditCommand =>
             _userSwipeEdit ?? (_userSwipeEdit = new DelegateCommand<UserInfo>(ExecuteUserSwipeEditCommand));
-
 
 
         public UserInfoListingViewModel(INavigationService navigationService, IPageDialogService pageDialog, IDBServices<UserInfo> dBServices) : base(navigationService)
         {
             _services = dBServices;
             _pageDialogService = pageDialog;
-            this.Users = new ObservableCollection<UserInfo>();
             this.Title = "All Users";
-            this.ExecuteLoadUsers();
         }
+        public override async void OnNavigatedTo(INavigationParameters parameters)
+        {
+            await LoadUser();
+        }
+        
         private async void ExecuteLoadUsers()
         {
             this.IsBusy = true;
             try
             {
-                this.Users.Clear();
-                var list = await this._services.GetData();
-                foreach (var user in list)
-                {
-                    this.Users.Add(user);
-                }
+                await LoadUser();
             }
             catch (Exception ex)
             {
@@ -77,6 +79,15 @@ namespace PrismDemo.ViewModels
             {
                 this.IsBusy = false;
             }
+        }
+        private async Task LoadUser()
+        {
+            this.Users.Clear();
+            var list = await this._services.GetData();
+            foreach (var user in list)
+            {
+                this.Users.Add(user);
+            }  
         }
         private async void ExecuteViewUserCommand(UserInfo parameter)
         {
