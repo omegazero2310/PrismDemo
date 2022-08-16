@@ -12,7 +12,7 @@ namespace PrismDemo.Services
         private SQLiteAsyncConnection _conn;
         ~UserInfoServices()
         {
-            _conn.CloseAsync();
+            _conn?.CloseAsync();
         }
         public async Task InitDB()
         {

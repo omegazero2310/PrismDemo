@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace PrismDemo.ViewModels
@@ -37,6 +38,13 @@ namespace PrismDemo.ViewModels
         private DelegateCommand _addItemCommand;
         public DelegateCommand AddItemCommand =>
             _addItemCommand ?? (_addItemCommand = new DelegateCommand(ExecuteAddItemCommand));
+        private DelegateCommand<UserInfo> _userSwipeDelete;
+        public DelegateCommand<UserInfo> UserSwipeDeleteCommand =>
+            _userSwipeDelete ?? (_userSwipeDelete = new DelegateCommand<UserInfo>(ExecuteUserSwipeDeleteCommand));
+
+        private DelegateCommand<UserInfo> _userSwipeEdit;
+        public DelegateCommand<UserInfo> UserSwipeEditCommand =>
+            _userSwipeEdit ?? (_userSwipeEdit = new DelegateCommand<UserInfo>(ExecuteUserSwipeEditCommand));
 
 
 
@@ -76,6 +84,38 @@ namespace PrismDemo.ViewModels
         private async void ExecuteAddItemCommand()
         {
             await this.NavigationService.NavigateAsync("UserInfoUpdatePage");
+        }
+        private async void ExecuteUserSwipeDeleteCommand(UserInfo parameter)
+        {
+            try
+            {
+                var result = await this._pageDialogService.DisplayAlertAsync("Confirm Delete", $"Are you sure to delete {parameter.UserName} ?", "Delete", "Cancel");
+                if (result)
+                {
+                    await this._services.Delete(parameter);
+                    this.Users.Remove(this.Users.Where(Users => Users.UserName == parameter.UserName).FirstOrDefault());
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await this._pageDialogService.DisplayAlertAsync("Error","Cannot Delete: "+ex.Message,"OK");
+            }
+        }
+        private async void ExecuteUserSwipeEditCommand(UserInfo obj)
+        {
+            try
+            {
+                var parameter = new NavigationParameters();
+                parameter.Add("UserName",obj.UserName);
+                parameter.Add("DateCreated",obj.DateCreated);
+                await this.NavigationService.NavigateAsync(new Uri("UserInfoUpdatePage", UriKind.Relative), parameter);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await this._pageDialogService.DisplayAlertAsync("Error", "Message: " + ex.Message, "OK");
+            }
         }
     }
 }

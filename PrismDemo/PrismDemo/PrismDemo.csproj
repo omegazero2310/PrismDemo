@@ -9,10 +9,12 @@
     <None Remove="Exts\ResourceImage\badge_FILL0_wght400_GRAD0_opsz48.png" />
     <None Remove="Exts\ResourceImage\calendar_month_FILL0_wght400_GRAD0_opsz48.png" />
     <None Remove="Exts\ResourceImage\call_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Exts\ResourceImage\edit_note_FILL0_wght400_GRAD0_opsz48.png" />
     <None Remove="Exts\ResourceImage\home_FILL0_wght400_GRAD0_opsz48.png" />
     <None Remove="Exts\ResourceImage\mail_FILL0_wght400_GRAD0_opsz48.png" />
     <None Remove="Exts\ResourceImage\man_FILL0_wght400_GRAD0_opsz48.png" />
     <None Remove="Exts\ResourceImage\person_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Exts\ResourceImage\person_remove_FILL0_wght400_GRAD0_opsz48.png" />
     <None Remove="Exts\ResourceImage\speed_FILL0_wght400_GRAD0_opsz48.png" />
     <None Remove="Exts\ResourceImage\woman_FILL0_wght400_GRAD0_opsz48.png" />
   </ItemGroup>
@@ -22,16 +24,19 @@
     <EmbeddedResource Include="Exts\ResourceImage\badge_FILL0_wght400_GRAD0_opsz48.png" />
     <EmbeddedResource Include="Exts\ResourceImage\calendar_month_FILL0_wght400_GRAD0_opsz48.png" />
     <EmbeddedResource Include="Exts\ResourceImage\call_FILL0_wght400_GRAD0_opsz48.png" />
+    <EmbeddedResource Include="Exts\ResourceImage\edit_note_FILL0_wght400_GRAD0_opsz48.png" />
     <EmbeddedResource Include="Exts\ResourceImage\home_FILL0_wght400_GRAD0_opsz48.png" />
     <EmbeddedResource Include="Exts\ResourceImage\mail_FILL0_wght400_GRAD0_opsz48.png" />
     <EmbeddedResource Include="Exts\ResourceImage\man_FILL0_wght400_GRAD0_opsz48.png" />
     <EmbeddedResource Include="Exts\ResourceImage\person_FILL0_wght400_GRAD0_opsz48.png" />
+    <EmbeddedResource Include="Exts\ResourceImage\person_remove_FILL0_wght400_GRAD0_opsz48.png" />
     <EmbeddedResource Include="Exts\ResourceImage\speed_FILL0_wght400_GRAD0_opsz48.png" />
     <EmbeddedResource Include="Exts\ResourceImage\woman_FILL0_wght400_GRAD0_opsz48.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.4" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.7.0" />
     <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />

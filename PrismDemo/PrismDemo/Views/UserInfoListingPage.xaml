@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrismDemo.Views.UserInfoListingPage"
              xmlns:local="clr-namespace:PrismDemo.ViewModels"  
-             xmlns:model="clr-namespace:PrismDemo.Models">
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
@@ -15,28 +16,44 @@
                 SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Padding="0,0,0,1">
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="User Name:"/>
-                                <Label Text="{Binding UserName}" 
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItem Text="Delete"
+                                           IconImageSource="{xct:ImageResource PrismDemo.Exts.ResourceImage.person_remove_FILL0_wght400_GRAD0_opsz48.png}"
+                                           BackgroundColor="LightPink"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserInfoListingViewModel}}, Path=UserSwipeDeleteCommand}"		
+                                           CommandParameter="{Binding .}" />
+                                <SwipeItem Text="Edit"
+                                           IconImageSource="{xct:ImageResource PrismDemo.Exts.ResourceImage.edit_note_FILL0_wght400_GRAD0_opsz48.png}"
+                                           BackgroundColor="LightGreen"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserInfoListingViewModel}}, Path=UserSwipeEditCommand}"		
+                                           CommandParameter="{Binding .}" />
+                            </SwipeView.RightItems>
+                            
+                            <StackLayout Padding="0,0,0,1" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="User Name:"/>
+                                    <Label Text="{Binding UserName}" 
                             LineBreakMode="NoWrap" 
                             FontSize="16" />
-                            </StackLayout>
+                                </StackLayout>
 
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="First Name:"/>
-                                <Label Text="{Binding FirstName}" 
+                                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
+                                    <Label Text="First Name:"/>
+                                    <Label Text="{Binding FirstName}" 
                             LineBreakMode="NoWrap" 
                             FontSize="16" />
-                            </StackLayout>
+                                </StackLayout>
 
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="Last Name:"/>
-                                <Label Text="{Binding LastName}" 
+                                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
+                                    <Label Text="Last Name:"/>
+                                    <Label Text="{Binding LastName}" 
                             LineBreakMode="NoWrap" 
                             FontSize="16" />
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
+                        </SwipeView>
+                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

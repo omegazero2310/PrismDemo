@@ -33,7 +33,7 @@ namespace PrismDemo.ViewModels
 
         }
 
-        public virtual void OnNavigatedTo(INavigationParameters parameters)
+        public virtual async void OnNavigatedTo(INavigationParameters parameters)
         {
 
         }
