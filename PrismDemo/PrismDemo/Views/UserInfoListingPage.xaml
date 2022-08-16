@@ -29,29 +29,38 @@
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserInfoListingViewModel}}, Path=UserSwipeEditCommand}"		
                                            CommandParameter="{Binding .}" />
                             </SwipeView.RightItems>
-                            
-                            <StackLayout Padding="0,0,0,1" Orientation="Horizontal">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="User Name:"/>
-                                    <Label Text="{Binding UserName}" 
-                            LineBreakMode="NoWrap" 
-                            FontSize="16" />
-                                </StackLayout>
+                            <StackLayout>
+                                <StackLayout Padding="0,0,0,1" Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="User Name:"/>
+                                        <Label Text="{Binding UserName}" 
+                                            LineBreakMode="NoWrap" 
+                                            FontSize="16" />
+                                    </StackLayout>
 
-                                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
-                                    <Label Text="First Name:"/>
-                                    <Label Text="{Binding FirstName}" 
-                            LineBreakMode="NoWrap" 
-                            FontSize="16" />
-                                </StackLayout>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
+                                        <Label Text="First Name:"/>
+                                        <Label Text="{Binding FirstName}" 
+                                            LineBreakMode="NoWrap" 
+                                            FontSize="16" />
+                                    </StackLayout>
 
-                                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
-                                    <Label Text="Last Name:"/>
-                                    <Label Text="{Binding LastName}" 
-                            LineBreakMode="NoWrap" 
-                            FontSize="16" />
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
+                                        <Label Text="Last Name:"/>
+                                        <Label Text="{Binding LastName}" 
+                                            LineBreakMode="NoWrap" 
+                                            FontSize="16" />
+                                    </StackLayout>
                                 </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        NumberOfTapsRequired="1"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserInfoListingViewModel}}, Path=ViewUserCommand}"
+                                        CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
                             </StackLayout>
+                            
                         </SwipeView>
                         
                     </DataTemplate>

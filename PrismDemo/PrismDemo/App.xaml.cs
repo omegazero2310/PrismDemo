@@ -47,6 +47,7 @@ namespace PrismDemo
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<UserInfoListingPage, UserInfoListingViewModel>();
             containerRegistry.RegisterForNavigation<UserInfoUpdatePage, UserInfoUpdateViewModel>();
+            containerRegistry.RegisterForNavigation<UserInfoDetailPage, UserInfoDetailViewModel>();
         }
     }
 }

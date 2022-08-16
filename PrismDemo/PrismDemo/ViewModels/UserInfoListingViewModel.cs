@@ -54,6 +54,7 @@ namespace PrismDemo.ViewModels
             _pageDialogService = pageDialog;
             this.Users = new ObservableCollection<UserInfo>();
             this.Title = "All Users";
+            this.ExecuteLoadUsers();
         }
         private async void ExecuteLoadUsers()
         {
@@ -79,7 +80,9 @@ namespace PrismDemo.ViewModels
         }
         private async void ExecuteViewUserCommand(UserInfo parameter)
         {
-
+            var paramPass = new NavigationParameters();
+            paramPass.Add("UserName", parameter.UserName);
+            await this.NavigationService.NavigateAsync("UserInfoDetailPage", paramPass);
         }
         private async void ExecuteAddItemCommand()
         {

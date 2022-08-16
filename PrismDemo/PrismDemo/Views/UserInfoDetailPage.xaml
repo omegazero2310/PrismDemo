@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrismDemo.Views.UserInfoDetailPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection Title="User Info">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.person_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <Entry Placeholder="Enter User Name" Text="{Binding UserName}" ReturnType="Next" HorizontalOptions="FillAndExpand" 
+                                   IsEnabled="false"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.badge_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <Entry Placeholder="Enter First Name" Text="{Binding FirstName}" ReturnType="Next" HorizontalOptions="FillAndExpand" IsEnabled="false"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.badge_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <Entry Placeholder="Enter Last Name" Text="{Binding LastName}" ReturnType="Next" HorizontalOptions="FillAndExpand" IsEnabled="false"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.man_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <Picker Title="Select Gender" ItemsSource="{Binding GenderList}" SelectedIndex="{Binding UserGender}" HorizontalOptions="FillAndExpand" IsEnabled="false"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Date Of Birth">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.calendar_month_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <DatePicker  HorizontalOptions="FillAndExpand" Date="{Binding DateOfBirth}" IsEnabled="false"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+
+                <TableSection Title="Contact">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.home_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <Entry Placeholder="Enter Address" Text="{Binding Address}" ReturnType="Next" HorizontalOptions="FillAndExpand" IsEnabled="false"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.mail_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <Entry Placeholder="Enter Email" Text="{Binding Email}" ReturnType="Next" HorizontalOptions="FillAndExpand" IsEnabled="false"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.call_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <Entry Placeholder="Enter Phone Number" Text="{Binding PhoneNumber}" ReturnType="Next" Keyboard="Numeric"  HorizontalOptions="FillAndExpand" IsEnabled="false"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Other">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.speed_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <Entry Placeholder="Enter Km" ReturnType="Done" Text="{Binding Kilometer}" Keyboard="Numeric"  HorizontalOptions="FillAndExpand" IsEnabled="false"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>
