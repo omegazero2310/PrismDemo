@@ -26,7 +26,7 @@ namespace PrismDemo.ViewModels
         private bool _isUpdate = false;
         public bool IsUpdate
         {
-            get { return _isUpdate = false; }
+            get { return _isUpdate; }
             set { SetProperty(ref _isUpdate, value); }
         }
         public List<string> GenderList
@@ -106,20 +106,23 @@ namespace PrismDemo.ViewModels
         {
             try
             {
-                this.UserName = parameters["UserName"].ToString();
-                this.DateCreated = Convert.ToDateTime(parameters["DateCreated"]);
-                this.Title = "Update User";
-                this.IsUpdate = true;
-                var info = await this._dBServices.GetData(this.UserName);
-                this.UserName = info.UserName;
-                this.FirstName = info.FirstName;
-                this.LastName = info.LastName;
-                this.UserGender = ((int)info.Gender).ToString();
-                this.DateOfBirth = info.DateOfBirth;
-                this.Address = info.Address;
-                this.Email = info.Email;
-                this.PhoneNumber = info.PhoneNumber;
-                this.Kilometer = info.TotalKM.ToString();
+                if (parameters["UserName"] != null)
+                {
+                    this.UserName = parameters["UserName"].ToString();
+                    this.DateCreated = Convert.ToDateTime(parameters["DateCreated"]);
+                    this.Title = "Update User";
+                    this.IsUpdate = true;
+                    var info = await this._dBServices.GetData(this.UserName);
+                    this.UserName = info.UserName;
+                    this.FirstName = info.FirstName;
+                    this.LastName = info.LastName;
+                    this.UserGender = ((int)info.Gender).ToString();
+                    this.DateOfBirth = info.DateOfBirth;
+                    this.Address = info.Address;
+                    this.Email = info.Email;
+                    this.PhoneNumber = info.PhoneNumber;
+                    this.Kilometer = info.TotalKM.ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -127,7 +130,7 @@ namespace PrismDemo.ViewModels
                 await _pageDialogService.DisplayAlertAsync("Loading Error", "Load user failed:" + ex.Message, "Return");
                 await this.NavigationService.GoBackAsync();
             }
-            
+
         }
         private async void ExecuteUpdateCommand()
         {
