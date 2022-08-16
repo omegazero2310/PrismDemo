@@ -3,6 +3,14 @@ using System.Threading.Tasks;
 
 namespace PrismDemo.Services
 {
+    /// <summary>
+    /// Common local database action
+    /// </summary>
+    /// <typeparam name="T">POCO class</typeparam>
+    /// <Modified>
+    /// Name Date Comments
+    /// annv3 16/08/2022 created
+    /// </Modified>
     public interface IDBServices<T> where T : class
     {
         Task InitDB();
