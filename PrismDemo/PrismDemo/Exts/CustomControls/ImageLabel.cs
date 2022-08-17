@@ -1,10 +1,12 @@
-﻿using Xamarin.Forms;
+﻿//PrismDemo.Exts.CustomControls
+//ImageLabel
+using Xamarin.Forms;
 
 namespace PrismDemo.Exts.CustomControls
 {
-    public class ImageEntry : Entry
+    public class ImageLabel : Label
     {
-        public ImageEntry()
+        public ImageLabel()
         {
             this.HeightRequest = 50;
         }
@@ -53,6 +55,4 @@ namespace PrismDemo.Exts.CustomControls
             set { SetValue(ImageAlignmentProperty, value); }
         }
     }
-
-    
 }

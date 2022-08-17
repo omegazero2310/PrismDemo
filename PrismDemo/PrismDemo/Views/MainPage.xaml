@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrismDemo.Views.MainPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             xmlns:custom="clr-namespace:PrismDemo.Exts.CustomControls">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+        <custom:ImageLabel Image="icon_home_48" Text="TEST LABEL WITH ICON" ImageHeight="20" ImageWidth="20"/>
         <Button Text="Go To Listing" Command="{Binding GoToListPageCommand}"/>
     </StackLayout>
 
