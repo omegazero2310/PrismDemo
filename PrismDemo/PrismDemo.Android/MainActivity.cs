@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using PrismDemo.Droid.Renderers;
 
 namespace PrismDemo.Droid
 {

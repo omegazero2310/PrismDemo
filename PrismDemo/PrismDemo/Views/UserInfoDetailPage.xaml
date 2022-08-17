@@ -3,16 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrismDemo.Views.UserInfoDetailPage"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             xmlns:custom="clr-namespace:PrismDemo.Exts.CustomControls">
     <ContentPage.Content>
         <TableView Intent="Form">
             <TableRoot>
                 <TableSection Title="User Info">
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.person_FILL0_wght400_GRAD0_opsz48.png}"></Image>
+                            <custom:ImageEntry 
+                                Image="icon_person_48"
+                                ImageHeight="24"
+                                ImageWidth="24"
+                                Text="{Binding UserName}"
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="false"/>
+                            <!--<Image Source="{xct:ImageResource PrismDemo.Exts.ResourceImage.person_FILL0_wght400_GRAD0_opsz48.png}"></Image>
                             <Entry Placeholder="Enter User Name" Text="{Binding UserName}" ReturnType="Next" HorizontalOptions="FillAndExpand" 
-                                   IsEnabled="false"></Entry>
+                                   IsEnabled="false"></Entry>-->
                         </StackLayout>
                     </ViewCell>
 
